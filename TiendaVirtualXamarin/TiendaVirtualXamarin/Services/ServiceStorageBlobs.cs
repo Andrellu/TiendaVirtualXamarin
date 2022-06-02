@@ -24,7 +24,8 @@ namespace TiendaVirtualXamarin.Services
             BlobContainerClient folder = this.client.GetBlobContainerClient(containerName);
             await folder.DeleteBlobAsync(blobName);
         }
-
+        // Chavales esto no lo usamos y lo hacia por base de datos
+        // Este método es inútil, creo que se podria quitar.
         public async Task<List<string>> GetBlobsAsync(string containerName)
         {
             BlobContainerClient folder = this.client.GetBlobContainerClient(containerName);
