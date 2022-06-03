@@ -18,7 +18,7 @@ namespace TiendaVirtualXamarin.ViewModels
                 new MasterPageItem
                 {
                     Titulo="Inicio",
-                    //Tipo=typeof(),
+                    Tipo=typeof(ProductosView),
                     Descripcion="Bienvenidos a RanShop.",
                     //Icono="home.png"
                 },
