@@ -36,10 +36,9 @@ namespace TiendaVirtualXamarin.ViewModels
 
         private async Task LoadProductosAsync()
         {
-            List<Producto> data =
-                   await this.service.GetProductosAsync();
-            this.Productos =
-            new ObservableCollection<Producto>(data);
+            List<Producto> data = await this.service.GetProductosAsync();
+            int num = data.Count;
+            this.Productos = new ObservableCollection<Producto>(data);
         }
     }
 }

@@ -1,12 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TiendaVirtualXamarin.Views.ProductosView">
+             x:Class="TiendaVirtualXamarin.Views.ProductosView"
+             xmlns:local="clr-namespace:TiendaVirtualXamarin">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+        <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosListViewModel}">
+            <Label Text="PRODUCTOS"
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Productos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="200"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Image Source="" HeightRequest="50"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Grid.Column="1">
+                                    <Label Text="{Binding Nombre}" FontSize="30"/>
+                                    <Label Text="{Binding Descripcion}" FontSize="20"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Button Text="Detalles"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -26,8 +26,8 @@ namespace TiendaVirtualXamarin.Services
             builder.RegisterType<ServiceProductos>();
             builder.RegisterType<MainMenuView>().SingleInstance();
             builder.RegisterType<MainMenuViewModel>();
-            //builder.RegisterType<DoctoresListViewModel>();
-            string resourceName = "XamarinApi.appsettings.json";
+            builder.RegisterType<ProductosListViewModel>();
+            string resourceName = "TiendaVirtualXamarin.appsettings.json";
             Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream(resourceName);
             IConfiguration configuration = new ConfigurationBuilder().AddJsonStream(stream).Build();
             builder.Register<IConfiguration>(x => configuration);
