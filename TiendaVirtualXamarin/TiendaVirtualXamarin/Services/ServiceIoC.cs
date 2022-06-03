@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using TiendaVirtualXamarin.ViewModels;
+using TiendaVirtualXamarin.Views;
 
 namespace TiendaVirtualXamarin.Services
 {
@@ -23,6 +24,8 @@ namespace TiendaVirtualXamarin.Services
             ContainerBuilder builder = new ContainerBuilder();
             //REGISTRAMOS TODO LO QUE VAYAMOS A INYECTAR
             builder.RegisterType<ServiceProductos>();
+            builder.RegisterType<MainMenuView>().SingleInstance();
+            builder.RegisterType<MainMenuViewModel>();
             //builder.RegisterType<DoctoresListViewModel>();
             string resourceName = "XamarinApi.appsettings.json";
             Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream(resourceName);
@@ -38,6 +41,20 @@ namespace TiendaVirtualXamarin.Services
             get
             {
                 return this.container.Resolve<ProductosListViewModel>();
+            }
+        }
+        public MainMenuView MainMenuView
+        {
+            get
+            {
+                return this.container.Resolve<MainMenuView>();
+            }
+        }
+        public MainMenuViewModel MainMenuViewModel
+        {
+            get
+            {
+                return this.container.Resolve<MainMenuViewModel>();
             }
         }
     }

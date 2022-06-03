@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaVirtualXamarin.Views.MainMenuView"
+                  xmlns:local="clr-namespace:TiendaVirtualXamarin"
+                  xmlns:behaviorspack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack">
+    <MasterDetailPage.Master>
+        <ContentPage Title="MainPage"
+                     BackgroundColor="white"
+                     x:Name="contentMenu"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=MainMenuViewModel}">
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="DodgerBlue"
+                             HeightRequest="56">
+                    <Label Text="Menu"
+                           FontSize="Large"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <ListView x:Name="lsvMenu"
+                          RowHeight="84"
+                          SeparatorVisibility="None"
+                          BackgroundColor="white"
+                          ItemsSource="{Binding MenuPrincipal}">
+                    <!--Implementacion de Behavior en ListView START-->
+                    <ListView.Behaviors>
+                        <behaviorspack:SelectedItemBehavior Command="{Binding PaginaSeleccionada}"/>
+                    </ListView.Behaviors>
+                    <!--Implementacion de Behavior en ListView END-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             HeightRequest="84">
+                                    <Image Source="{Binding Icono}" 
+                                           HeightRequest="24"
+                                           WidthRequest="24"
+                                           VerticalOptions="CenterAndExpand"
+                                           HorizontalOptions="Center"
+                                           Margin="16"/>
+                                    <StackLayout Orientation="Vertical"
+                                                 VerticalOptions="CenterAndExpand"
+                                                 HorizontalOptions="Start">
+                                        <Label Text="{Binding Titulo}"
+                                               FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}"
+                                               FontAttributes="Italic"
+                                           FontSize="Small"
+                                           TextColor="Silver"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

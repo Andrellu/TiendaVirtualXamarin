@@ -1,4 +1,6 @@
 ﻿using System;
+using TiendaVirtualXamarin.Services;
+using TiendaVirtualXamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +11,19 @@ namespace TiendaVirtualXamarin
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            //  Implementacion del menu lateral en nuestro 'MainPage':
+            MainMenuView mainMenu = App.ServiceLocator.MainMenuView;
+            mainMenu.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(MainPage)));
+            MainPage = mainMenu;
+        }
+        //  Implementacion de las propiedades del 'ServiceIoC' en 'App.xaml.cs':
+        private static ServiceIoC _ServiceLocator;
+        public static ServiceIoC ServiceLocator
+        {
+            get
+            {
+                return _ServiceLocator = _ServiceLocator ?? new ServiceIoC();
+            }
         }
 
         protected override void OnStart()
