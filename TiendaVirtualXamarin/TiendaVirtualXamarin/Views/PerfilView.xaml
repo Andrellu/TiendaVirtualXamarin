@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaVirtualXamarin.Views.PerfilView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Margin="10" Padding="2" HeightRequest="6000">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="300"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="201"/>
+                        
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="250" WidthRequest="199">
+                        <Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" HorizontalOptions="Start" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="250" WidthRequest="210">
+                        <Label Text="nombreUser" VerticalOptions="Start" HorizontalOptions="Start" FontSize="30" TextColor="DarkMagenta" />
+                        <Label Text="nombre" VerticalOptions="Start" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
+                        <Label Text="Apellido" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="LightBlue" >
+                        <Label Text="Direccionlargaparaversicuela si ha colao jaja" VerticalOptions="StartAndExpand" FontSize="25" />
+                        
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Button  Text="Accion X" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="1" >
+                        <Button  Text="LogOut"/>
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="Green">
+                        <ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout BackgroundColor="LightYellow">
+                                          
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

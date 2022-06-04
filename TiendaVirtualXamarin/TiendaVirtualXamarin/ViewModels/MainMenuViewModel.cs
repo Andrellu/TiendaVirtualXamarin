@@ -28,6 +28,13 @@ namespace TiendaVirtualXamarin.ViewModels
                     //Tipo=typeof(),
                     Descripcion="Disponibles todas las categorias.",
                     //Icono="phone.png"
+                },
+                 new MasterPageItem
+                {
+                    Titulo="Perfil",
+                    Tipo=typeof(PerfilView),
+                    Descripcion="A veh q tal si ve",
+                    //Icono="phone.png"
                 }
             };
             this.MenuPrincipal = menu;
