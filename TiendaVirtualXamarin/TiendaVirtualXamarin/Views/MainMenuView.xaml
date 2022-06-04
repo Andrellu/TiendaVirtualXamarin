@@ -12,15 +12,16 @@
             <StackLayout Orientation="Vertical">
                 <StackLayout BackgroundColor="DodgerBlue"
                              HeightRequest="56">
-                    <Label Text="Menu"
+                    <Label Text="RanShop"
                            FontSize="Large"
                            TextColor="White"
-                           FontAttributes="Bold"
                            VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="CenterAndExpand"/>
+                           FontAttributes="Bold"
+                           Padding="0 0 0 16"
+                           HorizontalOptions="Start"/>
                 </StackLayout>
                 <ListView x:Name="lsvMenu"
-                          RowHeight="84"
+                          RowHeight="56"
                           SeparatorVisibility="None"
                           BackgroundColor="white"
                           ItemsSource="{Binding MenuPrincipal}">
@@ -33,7 +34,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal"
-                                             HeightRequest="84">
+                                             HeightRequest="56">
                                     <Image Source="{Binding Icono}" 
                                            HeightRequest="24"
                                            WidthRequest="24"
@@ -44,13 +45,8 @@
                                                  VerticalOptions="CenterAndExpand"
                                                  HorizontalOptions="Start">
                                         <Label Text="{Binding Titulo}"
-                                               FontAttributes="Bold"
-                                           FontSize="Medium"
-                                           TextColor="Black"/>
-                                        <Label Text="{Binding Descripcion}"
-                                               FontAttributes="Italic"
-                                           FontSize="Small"
-                                           TextColor="Silver"/>
+                                               FontSize="Medium"
+                                               TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
