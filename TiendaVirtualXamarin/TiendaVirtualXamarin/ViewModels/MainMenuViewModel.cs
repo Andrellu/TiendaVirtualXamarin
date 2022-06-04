@@ -20,6 +20,12 @@ namespace TiendaVirtualXamarin.ViewModels
                     Titulo="Inicio",
                     Tipo=typeof(ProductosView),
                     Icono="home.png"
+                },
+                new MasterPageItem
+                {
+                    Titulo="Categorías",
+                    Tipo=typeof(CategoriasView),
+                    Icono="category.png"
                 }
             };
             this.MenuPrincipal = menu;

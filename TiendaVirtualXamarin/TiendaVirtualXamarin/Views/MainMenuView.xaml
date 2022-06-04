@@ -11,13 +11,13 @@
                      BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=MainMenuViewModel}">
             <StackLayout Orientation="Vertical">
                 <StackLayout BackgroundColor="DodgerBlue"
-                             HeightRequest="56">
+                             HeightRequest="56"
+                             Padding="16">
                     <Label Text="RanShop"
                            FontSize="Large"
                            TextColor="White"
                            VerticalOptions="CenterAndExpand"
                            FontAttributes="Bold"
-                           Padding="0 0 0 16"
                            HorizontalOptions="Start"/>
                 </StackLayout>
                 <ListView x:Name="lsvMenu"

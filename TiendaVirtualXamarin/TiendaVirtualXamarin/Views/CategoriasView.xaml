@@ -5,11 +5,22 @@
              xmlns:local="clr-namespace:TiendaVirtualXamarin">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator},Path=CategoriasViewModel}">
-            <StackLayout Orientation="Horizontal"
+            <StackLayout Orientation="Vertical"
                          Padding="16">
                 <Label Text="Categorías"
-                   FontSize="32"
-                   FontAttributes="Bold"/>
+                           FontSize="Large"
+                           FontAttributes="Bold"/>
+                <StackLayout BackgroundColor="WhiteSmoke">
+                    <ListView ItemsSource="{Binding Categorias}" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Button Text="{Binding Nombre}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
