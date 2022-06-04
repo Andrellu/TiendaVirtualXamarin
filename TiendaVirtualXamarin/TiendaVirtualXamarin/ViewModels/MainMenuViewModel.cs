@@ -19,15 +19,7 @@ namespace TiendaVirtualXamarin.ViewModels
                 {
                     Titulo="Inicio",
                     Tipo=typeof(ProductosView),
-                    Descripcion="Bienvenidos a RanShop.",
-                    //Icono="home.png"
-                },
-                new MasterPageItem
-                {
-                    Titulo="Categorias",
-                    //Tipo=typeof(),
-                    Descripcion="Disponibles todas las categorias.",
-                    //Icono="phone.png"
+                    Icono="home.png"
                 }
             };
             this.MenuPrincipal = menu;

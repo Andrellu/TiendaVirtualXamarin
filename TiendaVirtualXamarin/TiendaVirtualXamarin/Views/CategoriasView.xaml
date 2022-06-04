@@ -5,7 +5,12 @@
              xmlns:local="clr-namespace:TiendaVirtualXamarin">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator},Path=CategoriasViewModel}">
-            
+            <StackLayout Orientation="Horizontal"
+                         Padding="16">
+                <Label Text="Categorías"
+                   FontSize="32"
+                   FontAttributes="Bold"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
