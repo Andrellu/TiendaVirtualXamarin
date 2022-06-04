@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TiendaVirtualXamarin.Base;
 using TiendaVirtualXamarin.Services;
+using TiendaVirtualXamarin.Views;
+using Xamarin.Forms;
 
 namespace TiendaVirtualXamarin.ViewModels
 {
@@ -39,6 +41,22 @@ namespace TiendaVirtualXamarin.ViewModels
             List<Producto> data = await this.service.GetProductosAsync();
             int num = data.Count;
             this.Productos = new ObservableCollection<Producto>(data);
+        }
+
+        public Command ShowProducto
+        {
+            get
+            {
+                return new Command(async (idProducto) =>
+                {
+                    Producto producto = await this.service.FindProducto((int)idProducto);
+                    ProductosDetailsView view = new ProductosDetailsView();
+                    ProductosDetailsViewModel viewModel = App.ServiceLocator.ProductosDetailsViewModel;
+                    viewModel.Producto = producto;
+                    view.BindingContext = viewModel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                });
+            }
         }
     }
 }
