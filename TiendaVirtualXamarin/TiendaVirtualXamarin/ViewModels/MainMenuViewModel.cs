@@ -26,12 +26,18 @@ namespace TiendaVirtualXamarin.ViewModels
                     Titulo="Categorías",
                     Tipo=typeof(CategoriasView),
                     Icono="category.png"
-                }
-                ,
+                },
                 new MasterPageItem
                 {
                     Titulo="Login",
                     Tipo=typeof(LoginView),
+                    //Icono="category.png"
+                }
+                ,
+                new MasterPageItem
+                {
+                    Titulo="Perfil",
+                    Tipo=typeof(PerfilView),
                     //Icono="category.png"
                 }
             };
