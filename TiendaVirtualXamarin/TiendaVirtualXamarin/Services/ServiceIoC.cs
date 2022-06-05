@@ -25,10 +25,13 @@ namespace TiendaVirtualXamarin.Services
             //REGISTRAMOS TODO LO QUE VAYAMOS A INYECTAR
             builder.RegisterType<ServiceProductos>();
             builder.RegisterType<ServiceCategoria>();
+            builder.RegisterType<ServiceUsuarios>();
             builder.RegisterType<MainMenuView>().SingleInstance();
             builder.RegisterType<MainMenuViewModel>();
             builder.RegisterType<CategoriasViewModel>();
             builder.RegisterType<ProductosDetailsViewModel>();
+            builder.RegisterType<LoginViewModel>();
+            builder.RegisterType<RegistroUsuarioViewModel>();
             builder.RegisterType<ProductosListViewModel>();
             string resourceName = "TiendaVirtualXamarin.appsettings.json";
             Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream(resourceName);
@@ -72,6 +75,20 @@ namespace TiendaVirtualXamarin.Services
             get
             {
                 return this.container.Resolve<CategoriasViewModel>();
+            }
+        }
+        public LoginViewModel LoginViewModel
+        {
+            get
+            {
+                return this.container.Resolve<LoginViewModel>();
+            }
+        }
+        public RegistroUsuarioViewModel RegistroUsuarioViewModel
+        {
+            get
+            {
+                return this.container.Resolve<RegistroUsuarioViewModel>();
             }
         }
     }

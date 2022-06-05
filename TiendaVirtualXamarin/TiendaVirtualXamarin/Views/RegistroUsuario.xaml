@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaVirtualXamarin.Views.RegistroUsuario"
+             xmlns:local="clr-namespace:TiendaVirtualXamarin">
+    <ContentPage.Content>
+        <ScrollView Orientation="Horizontal">
+            <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
+                <Label Text="Nombre Usuario:"
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding UserName}" FontSize="25"/>
+                <Label Text="Nombre:" 
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding Nombre}" FontSize="25"/>
+                <Label Text="Primer Apellido:" 
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding ApellidoUno}" FontSize="25"/>
+                <Label Text="Segundo Apellido:" 
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding ApellidoDos}" FontSize="25"/>
+                <Label Text="Direccion:" 
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding Direccion}" FontSize="25"/>
+                <Label Text="Password:" 
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand" />
+                <Entry Text="{Binding Password}" IsPassword="True" FontSize="25"/>
+                <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
