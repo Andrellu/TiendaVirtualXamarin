@@ -31,7 +31,7 @@
                         
                     </StackLayout>
                     <StackLayout Grid.Row="2">
-                        <Button  Text="Accion X" />
+                        <Button  Text="Accion X" Command="{Binding prueba}" />
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" >
                         <Button  Text="LogOut"/>
