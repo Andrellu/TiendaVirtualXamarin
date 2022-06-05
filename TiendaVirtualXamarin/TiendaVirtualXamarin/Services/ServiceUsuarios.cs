@@ -37,7 +37,7 @@ namespace TiendaVirtualXamarin.Services
                 string json = JsonConvert.SerializeObject(model);
                 StringContent content =
                     new StringContent(json, Encoding.UTF8, "application/json");
-                string request = "/api/login/ValidarUsuario";
+                string request = "api/login/ValidarUsuario";
                 HttpResponseMessage response =
                     await client.PostAsync(request, content);
                 if (response.IsSuccessStatusCode)
@@ -58,7 +58,7 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                Uri uri = new Uri(this.UrlApi + request);
+                client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 client.DefaultRequestHeaders.Add("Authorization", "bearer " + token);
@@ -130,8 +130,8 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "/api/Usuarios/" + idUser;
-                client.BaseAddress = new Uri(this.UrlApi);
+                string request = "api/Usuarios/" + idUser;
+                Uri uri = new Uri(this.UrlApi + request);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.DeleteAsync(request);
@@ -156,7 +156,7 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "/api/Usuarios/CreateUsuario";
+                string request = "api/Usuarios/CreateUsuario";
                 client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
@@ -178,8 +178,8 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "/api/Usuarios/UpdateUsuario";
-                client.BaseAddress = new Uri(this.UrlApi);
+                string request = "api/Usuarios/UpdateUsuario";
+                Uri uri = new Uri(this.UrlApi + request);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 string json = JsonConvert.SerializeObject(user);
@@ -193,7 +193,7 @@ namespace TiendaVirtualXamarin.Services
             using (HttpClient client = new HttpClient())
             {
                 string request = "/api/Usuarios/UpdateMonedero/" + saldo + "/" + idUser;
-                client.BaseAddress = new Uri(this.UrlApi);
+                Uri uri = new Uri(this.UrlApi + request);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.PutAsync(request, null);
@@ -205,7 +205,7 @@ namespace TiendaVirtualXamarin.Services
             using (HttpClient client = new HttpClient())
             {
                 string request = "/api/Usuarios/UpdateCreditCARD/" + idUser + "/" + numTarjeta + "/" + fecha + "/" + cvc;
-                client.BaseAddress = new Uri(this.UrlApi);
+                Uri uri = new Uri(this.UrlApi + request);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.PutAsync(request, null);
