@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TiendaVirtualXamarin.Views.PerfilView">
+             x:Class="TiendaVirtualXamarin.Views.PerfilView"
+             xmlns:viemodels="clr-namespace:TiendaVirtualXamarin.ViewModels">
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout.BindingContext>
+                <viemodels:PerfilViewModel/>
+            </StackLayout.BindingContext>
             <Frame Margin="10" Padding="2" HeightRequest="6000">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -15,7 +19,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="170"/>
                         <ColumnDefinition Width="201"/>
-                        
+
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="250" WidthRequest="199">
@@ -28,28 +32,25 @@
                     </StackLayout>
                     <StackLayout Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="LightBlue" >
                         <Label Text="Direccionlargaparaversicuela si ha colao jaja" VerticalOptions="StartAndExpand" FontSize="25" />
-                        
+
                     </StackLayout>
                     <StackLayout Grid.Row="2">
-                        <Button  Text="Accion X" Command="{Binding prueba}" />
+                        <Button  Text="Accion X" />
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" >
                         <Button  Text="LogOut"/>
                     </StackLayout>
-                    
-                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="Green">
-                        <ListView>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout BackgroundColor="LightYellow">
-                                          
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
+
+                    <!--CARRITO-->
+                    <ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="hola" FontSize="40" TextColor="Black" BackgroundColor="Red"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </Frame>
         </StackLayout>
