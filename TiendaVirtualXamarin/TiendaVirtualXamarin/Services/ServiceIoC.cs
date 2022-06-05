@@ -26,6 +26,7 @@ namespace TiendaVirtualXamarin.Services
             builder.RegisterType<ServiceProductos>();
             builder.RegisterType<ServiceCategoria>();
             builder.RegisterType<MainMenuView>().SingleInstance();
+            builder.RegisterType<SessionService>().SingleInstance();
             builder.RegisterType<MainMenuViewModel>();
             builder.RegisterType<CategoriasViewModel>();
             builder.RegisterType<ProductosDetailsViewModel>();
@@ -39,6 +40,14 @@ namespace TiendaVirtualXamarin.Services
 
         //CREAMOS LAS PROPIEDADES PARA RECUPERAR LOS VIEWMODELS 
         //DENTRO DE LAS VISTAS
+        public SessionService SessionService
+        {
+            get
+            {
+                return this.container.Resolve<SessionService>();
+            }
+        }
+
         public ProductosListViewModel ProductosListViewModel
         {
             get
