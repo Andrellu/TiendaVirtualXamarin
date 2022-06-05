@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaVirtualXamarin.Views.LoginView">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout x:Name="Inicio" >
+                <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" />
+
+                <BoxView />
+
+                <!--
+                <Frame Margin="0" TranslationX="15" TranslationY="355">
+                    <BoxView HeightRequest="325" CornerRadius="20" WidthRequest="200" Color="Orange" />
+                </Frame>
+                -->
+
+                <Frame >
+                    <StackLayout>
+                        <StackLayout>
+                            <Label Text="DNI:" FontSize="20" x:Name="dni"/>
+                            <Entry WidthRequest="500" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Contraseña:" FontSize="20" />
+                            <Entry IsPassword="True" WidthRequest="500" />
+                        </StackLayout>
+                        <Button Text="Iniciar sesión" FontSize="15" />
+                        <Button Text="Registrarse" FontSize="15" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
