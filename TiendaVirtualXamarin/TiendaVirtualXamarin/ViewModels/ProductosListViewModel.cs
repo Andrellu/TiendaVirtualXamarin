@@ -58,5 +58,19 @@ namespace TiendaVirtualXamarin.ViewModels
                 });
             }
         }
+
+        public Command AddCarrito
+        {
+            get
+            {
+                return new Command(async (idProducto) =>
+                {
+                    List<Producto> carrito = App.ServiceLocator.SessionService.ProductosCarrito;
+                    Producto p = await this.service.FindProducto((int)idProducto);
+                    carrito.Add(p);
+                    await Application.Current.MainPage.DisplayAlert("ALERT", "Se añadio el Producto", "OK");
+                });
+            }
+        }
     }
 }

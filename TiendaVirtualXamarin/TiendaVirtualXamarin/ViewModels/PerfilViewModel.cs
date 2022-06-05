@@ -15,7 +15,10 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 return new Command(async () =>
                 {
-                                        
+                    CarritoView view = new CarritoView();
+                    CarritoViewModel viewmodel = App.ServiceLocator.CarritoViewModel;
+                    view.BindingContext = viewmodel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
                 });
             }
         }
