@@ -19,7 +19,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="170"/>
                         <ColumnDefinition Width="201"/>
-
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="250" WidthRequest="199">
@@ -35,22 +34,11 @@
 
                     </StackLayout>
                     <StackLayout Grid.Row="2">
-                        <Button  Text="Accion X" />
+                        <Button Text="Carrito" Command="{Binding MostarCarrito}" />
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" >
                         <Button  Text="LogOut"/>
                     </StackLayout>
-
-                    <!--CARRITO-->
-                    <ListView>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label Text="hola" FontSize="40" TextColor="Black" BackgroundColor="Red"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                 </Grid>
             </Frame>
         </StackLayout>
