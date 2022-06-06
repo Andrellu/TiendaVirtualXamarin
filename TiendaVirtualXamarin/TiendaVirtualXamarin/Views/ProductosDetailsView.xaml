@@ -8,14 +8,46 @@
         <converters:ImageProductosConverts x:Key="ImageConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
-            <StackLayout>
-                <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" WidthRequest="180"/>
-                <Label Text="{Binding Producto.Nombre}" FontSize="25"/>
-                <Label Text="{Binding Producto.Descripcion}" FontSize="20"/>
-                <Label Text="{Binding Producto.Stock, StringFormat='Cantidad: {0}.'}" FontSize="20"/>
-                <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0}€'}" FontSize="20"/>
-            </StackLayout>
-        </ScrollView>
+        <StackLayout>
+            <Frame Margin="20" Padding="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" Grid.Row="0">
+                        <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" WidthRequest="180"/>
+
+                    </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="1">
+                        <Label Text="{Binding Producto.Nombre}" FontSize="40" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" TextColor="Black" HorizontalOptions="Start"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="2">
+                        <Label  Text="{Binding Producto.Descripcion}" FontSize="20" MaxLines="4" LineBreakMode="TailTruncation"  WidthRequest="300"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="3">
+                        <Label Text="{Binding Producto.Stock, StringFormat='Stock: {0}.'}" FontAttributes="Italic" FontSize="25" HorizontalOptions="Start"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="4">
+                        <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0}€'}" FontSize="25" FontAttributes="Italic" HorizontalOptions="Start"/>
+                </StackLayout>
+            </Grid>
+            </Frame>
+
+
+
+
+        </StackLayout>
+     
+               
     </ContentPage.Content>
 </ContentPage>
