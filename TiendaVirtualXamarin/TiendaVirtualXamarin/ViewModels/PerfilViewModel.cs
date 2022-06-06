@@ -16,17 +16,17 @@ namespace TiendaVirtualXamarin.ViewModels
 
         public PerfilViewModel(ServiceUsuarios service)
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                Usuario user =  await this.LoadUsuarioAsync();
+                Usuario user =  this.LoadUsuario();
             });
         }
 
-        private async Task<Usuario> LoadUsuarioAsync()
+        private Usuario LoadUsuario()
         {
-            //string token = App.ServiceLocator.SessionService.Token;
-            //int id = App.ServiceLocator.SessionService.IdUser;
-            Usuario user = await this.service.GetUsuarioByIdAsync(token, id);
+            string token = App.ServiceLocator.SessionService.Token;
+
+            Usuario user = App.ServiceLocator.SessionService.User;
             return user;
         }
 
