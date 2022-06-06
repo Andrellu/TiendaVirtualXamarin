@@ -41,7 +41,7 @@
                                                 CommandParameter="{Binding IdProducto}" Text="Añadir al Carrito"/>
                                         <Button Text="Comprar" Command="{Binding BindingContext.ComprarProducto, Source={x:Reference stackProductos}}"
                                                     CommandParameter="{Binding IdProducto}" />
-                                        <Button Text="Reservar"/>
+                                       
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
                                         <Button  Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductos}}"
