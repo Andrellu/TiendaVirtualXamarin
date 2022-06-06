@@ -19,15 +19,19 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="250" WidthRequest="199">
-                        <Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" HorizontalOptions="Start" Aspect="AspectFit"/>
+                        <Frame CornerRadius="300" HasShadow="True">
+                            <Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" Aspect="AspectFit"/>
+                        </Frame>
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="250" WidthRequest="210">
-                        <Label Text="{Binding Usuario.NombreUsuario}" VerticalOptions="Start" HorizontalOptions="Start" FontSize="30" TextColor="DarkMagenta" />
-                        <Label Text="nombre" VerticalOptions="Start" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
-                        <Label Text="Apellido" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
+                        <Label Text="{Binding Usuario.NombreUsuario}" FontSize="30" TextColor="DarkMagenta" />
+                        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"/>
+                        <Label Text="{Binding Usuario.Nombre}" FontSize="30" TextColor="DarkBlue" />
+                        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"/>
+                        <Label Text="{Binding Usuario.Apellidos}" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
                     </StackLayout>
                     <StackLayout Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="LightBlue" >
-                        <Label Text="Direccionlargaparaversicuela si ha colao jaja" VerticalOptions="StartAndExpand" FontSize="25" />
+                        <Label Text="{Binding Usuario.Direccion}" VerticalOptions="StartAndExpand" FontSize="25" />
 
                     </StackLayout>
                     <StackLayout Grid.Row="2">

@@ -37,7 +37,7 @@ namespace TiendaVirtualXamarin.Services
             builder.RegisterType<ProductosListViewModel>();
             builder.RegisterType<CarritoViewModel>();
             builder.RegisterType<ProductosCategoriaViewModel>();
-            builder.RegisterType<LogOutViewModel>();
+            builder.RegisterType<PerfilViewModel>();
             string resourceName = "TiendaVirtualXamarin.appsettings.json";
             Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream(resourceName);
             IConfiguration configuration = new ConfigurationBuilder().AddJsonStream(stream).Build();
@@ -52,6 +52,14 @@ namespace TiendaVirtualXamarin.Services
             get
             {
                 return this.container.Resolve<SessionService>();
+            }
+        }
+
+        public PerfilViewModel PerfilViewModel
+        {
+            get
+            {
+                return this.container.Resolve<PerfilViewModel>();
             }
         }
 
