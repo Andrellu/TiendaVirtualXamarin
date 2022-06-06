@@ -59,15 +59,11 @@ namespace TiendaVirtualXamarin.ViewModels
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
-                    
-                    RegistroUsuario view = new RegistroUsuario();
-                    RegistroUsuarioViewModel viewmodel = App.ServiceLocator.RegistroUsuarioViewModel;
-
-                    view.BindingContext = viewmodel;
-
-                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                    MainMenuView view = App.ServiceLocator.MainMenuView;
+                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(RegistroUsuario)));
+                    view.IsPresented = false;
                 });
             }
         }
@@ -80,21 +76,15 @@ namespace TiendaVirtualXamarin.ViewModels
                 {
                     Usuario user = await this.LoginUsuarioAsync();
                     if (user != null)
-                    {
-                        /*
-                       Aqui generamos la view de perfil.
-
-                       Centros view = new Centros();
-
-                       CentrosListViewModel viewmodel = App.ServiceLocator.CentrosListViewModel;
-
-                       view.BindingContext = viewmodel;
-
-                       //Redirecciona a la vista centros
-                       await Application.Current.MainPage.Navigation.PushAsync(view);
-                       */
+                    {                        
+                        MainMenuView view = App.ServiceLocator.MainMenuView;
+                        view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(PerfilView)));
+                        view.IsPresented = false;
                     }
-                    await App.Current.MainPage.DisplayAlert("¡ADVERTENCIA!", "El usuario no existe o puso mal las credenciales.", "Ok");
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("¡ADVERTENCIA!", "El usuario no existe o puso mal las credenciales.", "Ok");
+                    }                    
                 });
             }
         }
@@ -107,10 +97,9 @@ namespace TiendaVirtualXamarin.ViewModels
                 Usuario user = await this.service.PerfilUsuarioAsync(token);
 
                 // AQUI GUARDAMOS EL TOKEN.
-                /*
-                    SessionService session =App.ServiceLocator.SessionService;
-                    session.Token = token;
-                */
+                SessionService session = App.ServiceLocator.SessionService;
+                session.Token = token;
+
                 this.Usuario = user;
                 return user;
             }

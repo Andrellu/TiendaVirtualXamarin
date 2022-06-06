@@ -89,16 +89,12 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 return new Command(async () =>
                 {
-                    await this.service.CreateUser(this.UserName, this.Nombre, this.ApellidoUno, this.ApellidoDos,
-                                                  this.Direccion, this.Password);
+                    await this.service.CreateUser(this.UserName, this.Nombre, this.ApellidoUno, this.ApellidoDos,this.Direccion, this.Password);
                     await Application.Current.MainPage.DisplayAlert("ADVERTENCIA:", "Usuario registrado con éxito.", "Ok");
-                    
-                    LoginView view = new LoginView();
-                    LoginViewModel viewmodel = App.ServiceLocator.LoginViewModel;
-
-                    view.BindingContext = viewmodel;
-
-                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                    //
+                    MainMenuView view = App.ServiceLocator.MainMenuView;
+                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(LoginView)));
+                    view.IsPresented = false;
                 });
             }
         }

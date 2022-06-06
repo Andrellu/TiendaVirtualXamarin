@@ -4,7 +4,7 @@
              x:Class="TiendaVirtualXamarin.Views.RegistroUsuario"
              xmlns:local="clr-namespace:TiendaVirtualXamarin">
     <ContentPage.Content>
-        <ScrollView Orientation="Horizontal">
+        <ScrollView Orientation="Vertical">
             <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
                 <Label Text="Nombre Usuario:"
                    FontSize="25"

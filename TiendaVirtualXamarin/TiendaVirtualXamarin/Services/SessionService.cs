@@ -7,7 +7,8 @@ namespace TiendaVirtualXamarin.Services
 {
     public class SessionService
     {
-        public List<Producto> ProductosCarrito { get; set; }        
+        public List<Producto> ProductosCarrito { get; set; }      
+        public string Token { get; set; }
 
         public SessionService()
         {
