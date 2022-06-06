@@ -46,7 +46,7 @@ namespace TiendaVirtualXamarin.ViewModels
                 new MasterPageItem
                 {
                     Titulo="Productos",
-                    Tipo=typeof(ProductosView),
+                    Tipo=typeof(ProductosLoginView),
                     Icono="home.png"
                 },
                 new MasterPageItem
