@@ -25,8 +25,6 @@ namespace TiendaVirtualXamarin.ViewModels
             }
         }
 
-            Usuario user = App.ServiceLocator.SessionService.User;
-            return user;
         public PerfilViewModel()
         {
             this.Usuario = App.ServiceLocator.SessionService.User;
