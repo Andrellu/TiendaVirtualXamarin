@@ -72,10 +72,19 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 return new Command(async (idProducto) =>
                 {
-                    List<Producto> carrito = App.ServiceLocator.SessionService.ProductosCarrito;
-                    Producto p = await this.service.FindProducto((int)idProducto);
-                    carrito.Add(p);
-                    await Application.Current.MainPage.DisplayAlert("ALERT", "Se añadio el Producto", "OK");
+                    if(App.ServiceLocator.SessionService.User != null)
+                    {
+                        List<Producto> carrito = App.ServiceLocator.SessionService.ProductosCarrito;
+                        Producto p = await this.service.FindProducto((int)idProducto);
+                        carrito.Add(p);
+                        await Application.Current.MainPage.DisplayAlert("ALERT", "Se añadio el Producto", "OK");
+                    }
+                    else
+                    {
+                        MainMenuView view = App.ServiceLocator.MainMenuView;
+                        view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(LoginView)));
+                        view.IsPresented = false;
+                    }
                 });
             }
         }

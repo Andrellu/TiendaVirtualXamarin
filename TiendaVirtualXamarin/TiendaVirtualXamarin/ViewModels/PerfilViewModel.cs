@@ -43,5 +43,23 @@ namespace TiendaVirtualXamarin.ViewModels
                 });
             }
         }
+
+        public Command LogOut
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.ServiceLocator.SessionService.ProductosCarrito = null;
+                    App.ServiceLocator.SessionService.User = null;
+                    App.ServiceLocator.SessionService.Token = null;
+                    MainMenuView view = App.ServiceLocator.MainMenuView;
+                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosView)));
+                    view.IsPresented = false;
+                    MessagingCenter.Send<MainMenuView>
+                 (App.ServiceLocator.MainMenuView, "RELOADLOGIN");
+                });
+            }
+        }
     }
 }

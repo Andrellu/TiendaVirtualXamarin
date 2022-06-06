@@ -45,7 +45,7 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 new MasterPageItem
                 {
-                    Titulo="Con Login",
+                    Titulo="Productos",
                     Tipo=typeof(ProductosView),
                     Icono="home.png"
                 },
@@ -57,7 +57,7 @@ namespace TiendaVirtualXamarin.ViewModels
                 },
                 new MasterPageItem
                 {
-                    Titulo="Login",
+                    Titulo="LogOut",
                     Tipo=typeof(LoginView),
                     Icono="loginn.png"
                 }
@@ -78,7 +78,7 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 new MasterPageItem
                 {
-                    Titulo="Sin Login",
+                    Titulo="Productos",
                     Tipo=typeof(ProductosView),
                     Icono="home.png"
                 },
@@ -93,13 +93,6 @@ namespace TiendaVirtualXamarin.ViewModels
                     Titulo="Login",
                     Tipo=typeof(LoginView),
                     Icono="loginn.png"
-                }
-                ,
-                new MasterPageItem
-                {
-                    Titulo="Perfil",
-                    Tipo=typeof(PerfilView),
-                    Icono="profilee.png"
                 }
             };
                 this.MenuPrincipal = menu;

@@ -13,7 +13,7 @@ namespace TiendaVirtualXamarin
             InitializeComponent();
             //  Implementacion del menu lateral en nuestro 'MainPage':
             MainMenuView mainMenu = App.ServiceLocator.MainMenuView;
-            mainMenu.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(MainPage)));
+            mainMenu.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosView)));
             MainPage = mainMenu;
         }
         //  Implementacion de las propiedades del 'ServiceIoC' en 'App.xaml.cs':

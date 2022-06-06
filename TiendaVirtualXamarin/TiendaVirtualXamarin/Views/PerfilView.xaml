@@ -34,7 +34,7 @@
                         <Button Text="Carrito" Command="{Binding MostarCarrito}" />
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" >
-                        <Button  Text="LogOut"/>
+                        <Button  Text="LogOut" Command="{Binding LogOut}"/>
                     </StackLayout>
                 </Grid>
             </Frame>
