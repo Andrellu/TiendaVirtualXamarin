@@ -56,11 +56,16 @@ namespace TiendaVirtualXamarin.ViewModels
                     {
                         productos.Add(p);
                     }
+                    /*
                     ProductosCategoriaView view = new ProductosCategoriaView();
                     ProductosCategoriaViewModel viewmodel = App.ServiceLocator.ProductosCategoriaViewModel;
                     viewmodel.Productos = productos;
                     view.BindingContext = viewmodel;
                     await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                    */
+                    MainMenuView view = App.ServiceLocator.MainMenuView;
+                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosCategoriaView)));
+                    view.IsPresented = false;
                 });
             }
         }

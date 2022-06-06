@@ -2,23 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.ProductosCategoriaView"
+             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
              xmlns:local="clr-namespace:TiendaVirtualXamarin">
+    <ContentPage.Resources>
+        <converters:ImageProductosConverts x:Key="ImageConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator},Path=ProductosCategoriaViewModel}">
-            <StackLayout Orientation="Vertical"
-                         Padding="16">
-                <StackLayout BackgroundColor="WhiteSmoke">
-                    <ListView ItemsSource="{Binding Productos}" SeparatorVisibility="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label Text="{Binding Nombre}"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </StackLayout>
+        <StackLayout x:Name="stackProductosCategoria" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosCategoriaViewModel}">
+            <ListView ItemsSource="{Binding Productos}" RowHeight="350">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="20" Padding="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="250"/>
+                                        <RowDefinition Height="100"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="170"/>
+                                        <ColumnDefinition Width="201"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Image Source="{Binding Imagen, Converter={StaticResource         
+                                                                           ImageConverter}}" 
+                                               Aspect="AspectFill" 
+                                               HeightRequest="250" 
+                                               WidthRequest="168"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" HeightRequest="250" WidthRequest="199">
+                                        <Label Text="{Binding Nombre}" FontSize="25" 
+                                               FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                        <Label Text="{Binding Stock, StringFormat='Unidades: {0}.'}" 
+                                               FontSize="20" HorizontalTextAlignment="Center"/>
+                                        <Label Text="{Binding Precio, StringFormat='Precio: {0}€'}" 
+                                               FontSize="20" HorizontalTextAlignment="Center"/>
+                                        <Button Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductosCategoria}}"
+                                                CommandParameter="{Binding IdProducto}" Text="Añadir al Carrito"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                        <Button  Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductosCategoria}}"
+                                                    CommandParameter="{Binding IdProducto}" 
+                                                    Text="Detalles" WidthRequest="350" HorizontalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
