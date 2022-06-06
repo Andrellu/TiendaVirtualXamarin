@@ -2,6 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.MainMenuView"
+                  Visual="Material"
                   xmlns:local="clr-namespace:TiendaVirtualXamarin"
                   xmlns:behaviorspack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack">
     <MasterDetailPage.Master>
@@ -23,7 +24,6 @@
                 <ListView x:Name="lsvMenu"
                           RowHeight="56"
                           SeparatorVisibility="None"
-                          BackgroundColor="white"
                           ItemsSource="{Binding MenuPrincipal}">
                     <!--Implementacion de Behavior en ListView START-->
                     <ListView.Behaviors>
