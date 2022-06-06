@@ -57,13 +57,6 @@ namespace TiendaVirtualXamarin.ViewModels
                 },
                 new MasterPageItem
                 {
-                    Titulo="LogOut",
-                    Tipo=typeof(LoginView),
-                    Icono="loginn.png"
-                }
-                ,
-                new MasterPageItem
-                {
                     Titulo="Perfil",
                     Tipo=typeof(PerfilView),
                     Icono="profilee.png"
