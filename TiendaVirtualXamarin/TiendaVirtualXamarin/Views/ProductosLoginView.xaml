@@ -39,7 +39,8 @@
                                                FontSize="20" HorizontalTextAlignment="Center"/>
                                         <Button Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductos}}"
                                                 CommandParameter="{Binding IdProducto}" Text="Añadir al Carrito"/>
-                                        <Button Text="Comprar" />
+                                        <Button Text="Comprar" Command="{Binding BindingContext.ComprarProducto, Source={x:Reference stackProductos}}"
+                                                    CommandParameter="{Binding IdProducto}" />
                                         <Button Text="Reservar"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.ColumnSpan="2">

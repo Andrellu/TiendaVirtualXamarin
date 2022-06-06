@@ -43,6 +43,22 @@ namespace TiendaVirtualXamarin.ViewModels
             this.Productos = new ObservableCollection<Producto>(data);
         }
 
+        public Command ComprarProducto
+        {
+            get
+            {
+                return new Command(async (idProducto) =>
+                {
+                    Producto producto = await this.service.FindProducto((int)idProducto);
+                    ComprasView view = new ComprasView();
+                    CompraProductosViewModel viewModel = App.ServiceLocator.CompraProductosViewModel;
+                    viewModel.Producto = producto;
+                    view.BindingContext = viewModel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                });
+            }
+        }
+
         public Command ShowProducto
         {
             get
