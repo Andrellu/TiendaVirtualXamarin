@@ -42,66 +42,66 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 //CON LOGIN
                 menu = new ObservableCollection<MasterPageItem>
-            {
-                new MasterPageItem
                 {
-                    Titulo="Con Login",
-                    Tipo=typeof(ProductosView),
-                    Icono="home.png"
-                },
-                new MasterPageItem
-                {
-                    Titulo="Categorías",
-                    Tipo=typeof(CategoriasView),
-                    Icono="category.png"
-                },
-                new MasterPageItem
-                {
-                    Titulo="Login",
-                    Tipo=typeof(LoginView),
-                    Icono="loginn.png"
-                }
-                ,
-                new MasterPageItem
-                {
-                    Titulo="Perfil",
-                    Tipo=typeof(PerfilView),
-                    Icono="profilee.png"
-                }
-            };
+                    new MasterPageItem
+                    {
+                        Titulo="Con Login",
+                        Tipo=typeof(ProductosView),
+                        Icono="home.png"
+                    },
+                    new MasterPageItem
+                    {
+                        Titulo="Categorías",
+                        Tipo=typeof(CategoriasView),
+                        Icono="category.png"
+                    },
+                    new MasterPageItem
+                    {
+                        Titulo="Login",
+                        Tipo=typeof(LoginView),
+                        Icono="loginn.png"
+                    }
+                    ,
+                    new MasterPageItem
+                    {
+                        Titulo="Perfil",
+                        Tipo=typeof(PerfilView),
+                        Icono="profilee.png"
+                    }
+                };
                 this.MenuPrincipal = menu;
             }
             else
             {
                 //SIN LOGIN
                 menu = new ObservableCollection<MasterPageItem>
-            {
-                new MasterPageItem
                 {
-                    Titulo="Sin Login",
-                    Tipo=typeof(ProductosView),
-                    Icono="home.png"
-                },
-                new MasterPageItem
-                {
-                    Titulo="Categorías",
-                    Tipo=typeof(CategoriasView),
-                    Icono="category.png"
-                },
-                new MasterPageItem
-                {
-                    Titulo="Login",
-                    Tipo=typeof(LoginView),
-                    Icono="loginn.png"
-                }
-                ,
-                new MasterPageItem
-                {
-                    Titulo="Perfil",
-                    Tipo=typeof(PerfilView),
-                    Icono="profilee.png"
-                }
-            };
+                    new MasterPageItem
+                    {
+                        Titulo="Sin Login",
+                        Tipo=typeof(ProductosView),
+                        Icono="home.png"
+                    },
+                    new MasterPageItem
+                    {
+                        Titulo="Categorías",
+                        Tipo=typeof(CategoriasView),
+                        Icono="category.png"
+                    },
+                    new MasterPageItem
+                    {
+                        Titulo="Login",
+                        Tipo=typeof(LoginView),
+                        Icono="loginn.png"
+                    }
+                    ,
+                    new MasterPageItem
+                    {
+                        Titulo="Perfil",
+                        Tipo=typeof(PerfilView),
+                        Icono="profilee.png"
+                    }
+                };
                 this.MenuPrincipal = menu;
             }
         }
