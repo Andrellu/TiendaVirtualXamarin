@@ -101,6 +101,10 @@ namespace TiendaVirtualXamarin.ViewModels
                 session.Token = token;
 
                 this.Usuario = user;
+
+                MessagingCenter.Send<MainMenuView>
+                    (App.ServiceLocator.MainMenuView, "RELOADLOGIN");
+
                 return user;
             }
             else
