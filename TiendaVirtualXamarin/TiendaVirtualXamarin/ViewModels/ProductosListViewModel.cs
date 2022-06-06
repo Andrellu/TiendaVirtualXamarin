@@ -55,6 +55,13 @@ namespace TiendaVirtualXamarin.ViewModels
                     viewModel.Producto = producto;
                     view.BindingContext = viewModel;
                     await Application.Current.MainPage.Navigation.PushModalAsync(view);
+
+                    //MainMenuView masterPage = App.ServiceLocator.MainMenuView;
+                    //var item = (MasterPageItem)seleccionado;
+                    //var tipo = item.Tipo;
+                    //masterPage.Detail = new NavigationPage((Page)Activator.CreateInstance(tipo));
+                    //masterPage.IsPresented = false;
+
                 });
             }
         }
