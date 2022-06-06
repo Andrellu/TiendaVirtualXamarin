@@ -104,14 +104,15 @@ namespace TiendaVirtualXamarin.ViewModels
             string token = await this.service.GetTokenAsync(this.UserName, this.Password);
             if (token != null)
             {
-                Usuario user = await this.service.PerfilUsuarioAsync(token);
-
-                // AQUI GUARDAMOS EL TOKEN.
-                /*
+                Usuario user = await this.service.PerfilUsuarioAsync(token);              
                     SessionService session =App.ServiceLocator.SessionService;
                     session.Token = token;
-                */
+                App.ServiceLocator.SessionService.User = user;
                 this.Usuario = user;
+
+                MessagingCenter.Send<MainMenuView>
+                    (App.ServiceLocator.MainMenuView, "RELOADLOGIN");
+
                 return user;
             }
             else
