@@ -19,7 +19,19 @@ namespace TiendaVirtualXamarin.ViewModels
             Task.Run(() =>
             {
                 Usuario user =  this.LoadUsuario();
+                this.Usuario = user;
             });
+        }
+
+        private Usuario _Usuario;
+        public Usuario Usuario
+        {
+            get { return this._Usuario; }
+            set
+            {
+                this._Usuario = value;
+                OnPropertyChanged("Usuario");
+            }
         }
 
         private Usuario LoadUsuario()
