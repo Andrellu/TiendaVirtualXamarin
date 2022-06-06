@@ -50,12 +50,12 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 return new Command(async (categoria) =>
                 {
-                    List<Producto> data = await this._ServiceProductos.GetProductosCategoriaAsync((string)categoria);
+                    /*List<Producto> data = await this._ServiceProductos.GetProductosCategoriaAsync((string)categoria);
                     ObservableCollection<Producto> productos = new ObservableCollection<Producto>();
                     foreach(Producto p in data)
                     {
                         productos.Add(p);
-                    }
+                    }*/
                     /*
                     ProductosCategoriaView view = new ProductosCategoriaView();
                     ProductosCategoriaViewModel viewmodel = App.ServiceLocator.ProductosCategoriaViewModel;
@@ -63,11 +63,19 @@ namespace TiendaVirtualXamarin.ViewModels
                     view.BindingContext = viewmodel;
                     await Application.Current.MainPage.Navigation.PushModalAsync(view);
                     */
+                    await this.SaveProductosCategoriaSession((string)categoria);
                     MainMenuView view = App.ServiceLocator.MainMenuView;
                     view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosCategoriaView)));
                     view.IsPresented = false;
                 });
             }
+        }
+
+        public async Task SaveProductosCategoriaSession(string categoria)
+        {
+            List<Producto> data = await this._ServiceProductos.GetProductosCategoriaAsync((string)categoria);
+            SessionService session = App.ServiceLocator.SessionService;
+            session.ProductosCategoria = data;
         }
     }
 }

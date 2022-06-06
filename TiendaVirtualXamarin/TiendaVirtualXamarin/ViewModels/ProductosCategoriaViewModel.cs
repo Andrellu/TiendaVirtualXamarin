@@ -14,9 +14,10 @@ namespace TiendaVirtualXamarin.ViewModels
     public class ProductosCategoriaViewModel:ViewModelBase
     {
         private ServiceProductos _ServiceProductos;
-        public ProductosCategoriaViewModel(ServiceProductos serviceProductos)
+        public ProductosCategoriaViewModel(ServiceProductos serviceProductos, SessionService serviceSession)
         {
             this._ServiceProductos = serviceProductos;
+            this.Productos = new ObservableCollection<Producto>(serviceSession.ProductosCategoria);
         }
 
         private ObservableCollection<Producto> _Productos;
