@@ -131,7 +131,7 @@ namespace TiendaVirtualXamarin.Services
             using (HttpClient client = new HttpClient())
             {
                 string request = "api/Usuarios/" + idUser;
-                Uri uri = new Uri(this.UrlApi + request);
+                client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.DeleteAsync(request);
@@ -179,7 +179,7 @@ namespace TiendaVirtualXamarin.Services
             using (HttpClient client = new HttpClient())
             {
                 string request = "api/Usuarios/UpdateUsuario";
-                Uri uri = new Uri(this.UrlApi + request);
+                client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 string json = JsonConvert.SerializeObject(user);
@@ -192,8 +192,8 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "/api/Usuarios/UpdateMonedero/" + saldo + "/" + idUser;
-                Uri uri = new Uri(this.UrlApi + request);
+                string request = "api/Usuarios/UpdateMonedero/" + saldo + "/" + idUser;
+                client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.PutAsync(request, null);
@@ -204,8 +204,8 @@ namespace TiendaVirtualXamarin.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "/api/Usuarios/UpdateCreditCARD/" + idUser + "/" + numTarjeta + "/" + fecha + "/" + cvc;
-                Uri uri = new Uri(this.UrlApi + request);
+                string request = "api/Usuarios/UpdateCreditCARD/" + idUser + "/" + numTarjeta + "/" + fecha + "/" + cvc;
+                client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(this.Header);
                 HttpResponseMessage response = await client.PutAsync(request, null);
