@@ -22,7 +22,7 @@
                         <Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" HorizontalOptions="Start" Aspect="AspectFit"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="0" HeightRequest="250" WidthRequest="210">
-                        <Label Text="nombreUser" VerticalOptions="Start" HorizontalOptions="Start" FontSize="30" TextColor="DarkMagenta" />
+                        <Label Text="{Binding Usuario.NombreUsuario}" VerticalOptions="Start" HorizontalOptions="Start" FontSize="30" TextColor="DarkMagenta" />
                         <Label Text="nombre" VerticalOptions="Start" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
                         <Label Text="Apellido" HorizontalOptions="End" FontSize="30" TextColor="DarkBlue" />
                     </StackLayout>
