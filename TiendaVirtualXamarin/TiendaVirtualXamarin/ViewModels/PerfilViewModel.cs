@@ -12,22 +12,22 @@ namespace TiendaVirtualXamarin.ViewModels
 {
     public class PerfilViewModel: ViewModelBase
     {
-        private ServiceUsuarios service;
 
-        public PerfilViewModel(ServiceUsuarios service)
+        private Usuario _User;
+
+        public Usuario Usuario
         {
-            Task.Run(() =>
+            get { return this._User; }
+            set
             {
-                Usuario user =  this.LoadUsuario();
-            });
+                this._User = value;
+                OnPropertyChanged("Usuario");
+            }
         }
 
-        private Usuario LoadUsuario()
+        public PerfilViewModel()
         {
-            string token = App.ServiceLocator.SessionService.Token;
-
-            Usuario user = App.ServiceLocator.SessionService.User;
-            return user;
+            this.Usuario = App.ServiceLocator.SessionService.User;
         }
 
         public Command MostarCarrito
