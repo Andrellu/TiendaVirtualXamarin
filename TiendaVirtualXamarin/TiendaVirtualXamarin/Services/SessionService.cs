@@ -7,11 +7,13 @@ namespace TiendaVirtualXamarin.Services
 {
     public class SessionService
     {
-        public List<Producto> ProductosCarrito { get; set; }        
+        public List<Producto> ProductosCarrito { get; set; }
+        public List<Producto> ProductosCategoria { get; set; }
 
         public SessionService()
         {
             this.ProductosCarrito = new List<Producto>();
+            this.ProductosCategoria = new List<Producto>();
         }
     }
 }
