@@ -11,6 +11,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="stackProductosCategoria" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosCategoriaViewModel}">
+            <Label Text="{Binding Categoria, StringFormat='Productos de {0}'}" FontSize="Large" FontAttributes="Bold" Padding="16" BackgroundColor="Silver"/>
             <ListView ItemsSource="{Binding Productos}" RowHeight="260">
                 <ListView.ItemTemplate>
                     <DataTemplate>

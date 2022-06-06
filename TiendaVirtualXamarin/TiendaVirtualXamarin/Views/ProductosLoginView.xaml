@@ -10,6 +10,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="stackProductos" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosListViewModel}">
+            <Label Text="Productos" FontSize="Large" FontAttributes="Bold" Padding="16" BackgroundColor="Silver"/>
             <ListView ItemsSource="{Binding Productos}" RowHeight="260">
                 <ListView.ItemTemplate>
                     <DataTemplate>

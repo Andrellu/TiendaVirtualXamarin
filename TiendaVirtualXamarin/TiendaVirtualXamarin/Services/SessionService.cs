@@ -9,6 +9,7 @@ namespace TiendaVirtualXamarin.Services
     {
         public List<Producto> ProductosCarrito { get; set; }
         public List<Producto> ProductosCategoria { get; set; }
+        public string CategoriaProductos { get; set; }
 
         public Usuario User { get; set; }
 

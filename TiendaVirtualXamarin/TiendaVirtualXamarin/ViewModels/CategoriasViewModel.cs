@@ -76,6 +76,7 @@ namespace TiendaVirtualXamarin.ViewModels
             List<Producto> data = await this._ServiceProductos.GetProductosCategoriaAsync((string)categoria);
             SessionService session = App.ServiceLocator.SessionService;
             session.ProductosCategoria = data;
+            session.CategoriaProductos = categoria;
         }
     }
 }

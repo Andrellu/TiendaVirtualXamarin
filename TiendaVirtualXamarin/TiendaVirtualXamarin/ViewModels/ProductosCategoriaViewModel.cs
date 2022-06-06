@@ -18,8 +18,19 @@ namespace TiendaVirtualXamarin.ViewModels
         {
             this._ServiceProductos = serviceProductos;
             this.Productos = new ObservableCollection<Producto>(serviceSession.ProductosCategoria);
+            this.Categoria = serviceSession.CategoriaProductos;
         }
 
+        private string _Categoria;
+        public string Categoria
+        {
+            get { return this._Categoria; }
+            set
+            {
+                this._Categoria = value;
+                OnPropertyChanged("Categoria");
+            }
+        }
         private ObservableCollection<Producto> _Productos;
         public ObservableCollection<Producto> Productos
         {
