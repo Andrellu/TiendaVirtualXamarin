@@ -11698,7 +11698,7 @@ namespace TiendaVirtualXamarin.Droid
 			public const int ic_mtrl_chip_close_circle = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int login = 2131165298;
+			public const int loginn = 2131165298;
 			
 			// aapt resource value: 0x7F070073
 			public const int material_ic_calendar_black_24dp = 2131165299;
@@ -11788,7 +11788,7 @@ namespace TiendaVirtualXamarin.Droid
 			public const int notify_panel_notification_icon_bg = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int profile = 2131165328;
+			public const int profilee = 2131165328;
 			
 			// aapt resource value: 0x7F070091
 			public const int test_custom_background = 2131165329;
