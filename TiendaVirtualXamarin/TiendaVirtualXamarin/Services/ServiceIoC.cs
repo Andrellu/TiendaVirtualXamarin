@@ -38,6 +38,7 @@ namespace TiendaVirtualXamarin.Services
             builder.RegisterType<ProductosListViewModel>();
             builder.RegisterType<CarritoViewModel>();
             builder.RegisterType<ProductosCategoriaViewModel>();
+            builder.RegisterType<VentasUsuarioViewModel>();
   
            
             builder.RegisterType<CompraProductosViewModel>();
@@ -139,6 +140,15 @@ namespace TiendaVirtualXamarin.Services
             {
                 return this.container.Resolve<CompraProductosViewModel>();
             }
-        }      
+        }
+
+        public VentasUsuarioViewModel VentasUsuarioViewModel
+        {
+            get
+            {
+                return this.container.Resolve<VentasUsuarioViewModel>();
+            }
+        }
+
     }
 }

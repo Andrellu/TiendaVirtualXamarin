@@ -44,6 +44,20 @@ namespace TiendaVirtualXamarin.ViewModels
             }
         }
 
+        public Command MostrarVentas
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    VentasUsuarioView view = new VentasUsuarioView();
+                    VentasUsuarioViewModel viewmodel = App.ServiceLocator.VentasUsuarioViewModel;
+                    view.BindingContext = viewmodel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                });
+            }
+        }
+
         public Command LogOut
         {
             get

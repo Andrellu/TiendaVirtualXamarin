@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiendaVirtualXamarin.Views.VentasUsuarioView"
+             xmlns:viewmodels="clr-namespace:TiendaVirtualXamarin.ViewModels"
+             xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=VentasUsuarioViewModel}"
+             x:Name="stackVentas">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Ventas"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Ventas}" RowHeight="50">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding IdVenta}"/>
+                                <Label Text="{Binding NombreProducto}"/>
+                                <Label Text="{Binding NombreUsuario}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

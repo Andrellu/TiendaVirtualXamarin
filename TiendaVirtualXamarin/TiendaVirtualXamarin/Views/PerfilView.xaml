@@ -43,8 +43,12 @@
                     <StackLayout Grid.Row="2">
                         <Button Text="Carrito" Command="{Binding MostarCarrito}" />
                     </StackLayout>
+                   
                     <StackLayout Grid.Row="2" Grid.Column="1" >
                         <Button  Text="LogOut" Command="{Binding LogOut}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Button Text="Ventas" Command="{Binding MostrarVentas}" />
                     </StackLayout>
                 </Grid>
             </Frame>
