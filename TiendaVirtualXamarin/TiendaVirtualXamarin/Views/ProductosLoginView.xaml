@@ -44,6 +44,8 @@
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout Padding="16" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                        <Button Text="Comprar" Command="{Binding BindingContext.ComprarProducto, Source={x:Reference stackProductos}}"
+                                                    CommandParameter="{Binding IdProducto}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
                                         <Button Text="Details" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
                                                 Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"/>
                                         <Button BackgroundColor="Silver" VerticalOptions="CenterAndExpand" HorizontalOptions="End" ImageSource="shopcar.png"
