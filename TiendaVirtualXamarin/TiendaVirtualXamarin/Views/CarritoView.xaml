@@ -3,24 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.CarritoView"
              Visual="Default"
-             xmlns:viewmodels="clr-namespace:TiendaVirtualXamarin.ViewModels">
+             xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=CarritoViewModel}" x:Name="PageCarritoView">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout.BindingContext>
-                <viewmodels:CarritoViewModel/>
-            </StackLayout.BindingContext>
             <Label Text="Carrito"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Carrito}">
+            <ListView ItemsSource="{Binding Carrito}" RowHeight="200">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Nombre}"/>
+                            <StackLayout>
+                                <Image Source="{Binding Imagen}"/>
+                                <Label Text="{Binding Nombre}" FontSize="20"/>
+                                <Button Text="Eliminar" Command="{Binding BindingContext.DeleteProductoCarrito, Source={x:Reference PageCarritoView}}" CommandParameter="{Binding IdProducto}"/>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Realizar Compra" Command="{Binding RealizarCompra}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
