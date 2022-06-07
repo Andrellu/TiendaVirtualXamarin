@@ -53,8 +53,6 @@
                                                      Orientation="Horizontal">
                                             <Button Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"
                                                 Text="Details" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
-                                            <Button 
-                                                Text="Buy" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
                                             <Button Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"
                                                 Text="Add" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
                                         </StackLayout>

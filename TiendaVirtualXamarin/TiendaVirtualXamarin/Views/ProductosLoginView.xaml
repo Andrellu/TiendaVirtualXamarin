@@ -13,6 +13,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="stackProductos" BackgroundColor="Transparent" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosListViewModel}">
+
             <ListView ItemsSource="{Binding Productos}" RowHeight="228" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -39,16 +40,6 @@
                                             <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100" Source="{Binding Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill"/>
                                         </StackLayout>
                                     </StackLayout>
-<<<<<<< HEAD
-                                    <StackLayout Padding="16" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                        <Button Text="Comprar" Command="{Binding BindingContext.ComprarProducto, Source={x:Reference stackProductos}}"
-                                                    CommandParameter="{Binding IdProducto}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
-                                        <Button Text="Details" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
-                                                Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"/>
-                                        <Button BackgroundColor="Silver" VerticalOptions="CenterAndExpand" HorizontalOptions="End" ImageSource="shopcar.png"
-                                                Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductos}}"
-                                                CommandParameter="{Binding IdProducto}"/>
-=======
                                     <Grid BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
@@ -62,7 +53,8 @@
                                                      Orientation="Horizontal">
                                             <Button Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"
                                                 Text="Details" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
-                                            <Button 
+                                            <Button Command="{Binding BindingContext.ComprarProducto, Source={x:Reference stackProductos}}"
+                                                    CommandParameter="{Binding IdProducto}"
                                                 Text="Buy" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
                                             <Button Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"
                                                 Text="Add" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
@@ -71,7 +63,6 @@
                                     <StackLayout BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" Padding="6">
                                         <Label Text="{Binding Precio, StringFormat='{0}€'}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"
                                                FontSize="24" TextColor="Black"/>
->>>>>>> branch-7Junio-V1
                                     </StackLayout>
                                 </Grid>
                             </Frame>
