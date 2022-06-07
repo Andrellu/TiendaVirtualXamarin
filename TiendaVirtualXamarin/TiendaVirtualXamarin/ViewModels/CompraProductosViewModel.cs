@@ -53,9 +53,7 @@ namespace TiendaVirtualXamarin.ViewModels
                     };
                     await this.serviceVentas.InsertVentaAsync(venta, App.ServiceLocator.SessionService.Token);
                     await App.Current.MainPage.DisplayAlert("¡ADVERTENCIA!", "Compra realizada con éxito.", "Ok");
-                    MainMenuView view = App.ServiceLocator.MainMenuView;
-                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosLoginView)));
-                    view.IsPresented = false;
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
                 });
             }
         }
