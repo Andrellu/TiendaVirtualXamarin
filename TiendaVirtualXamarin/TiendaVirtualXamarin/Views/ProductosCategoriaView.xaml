@@ -2,54 +2,65 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.ProductosCategoriaView"
-             Visual="Material"
+             Visual="Default"
              xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
-             xmlns:local="clr-namespace:TiendaVirtualXamarin">
+             xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BackgroundImageSource="wp.png">
     <ContentPage.Resources>
         <converters:SubStringTextConverts x:Key="TextConverter"/>
         <converters:ImageProductosConverts x:Key="ImageConverter"/>
+        <converters:DescripcionConverts x:Key="DescConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout x:Name="stackProductosCategoria" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosCategoriaViewModel}">
-            <Label Text="{Binding Categoria, StringFormat='Productos de {0}'}" FontSize="Large" FontAttributes="Bold" Padding="16" BackgroundColor="Silver"/>
-            <ListView ItemsSource="{Binding Productos}" RowHeight="260">
+        <StackLayout x:Name="stackProductosCategoria" BackgroundColor="Transparent" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ProductosCategoriaViewModel}">
+            <ListView ItemsSource="{Binding Productos}" RowHeight="228" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" Margin="16" HeightRequest="230" VerticalOptions="Start">
+                            <Frame Padding="0" CornerRadius="0" BackgroundColor="#8fc8ffff" VerticalOptions="CenterAndExpand" Margin="16">
                                 <Grid ColumnSpacing="0" RowSpacing="0">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="160"/>
-                                        <RowDefinition Height="70"/>
+                                        <RowDefinition Height="132"/>
+                                        <RowDefinition Height="64"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="132"/>
                                     </Grid.ColumnDefinitions>
-                                    <Frame Padding="0" BackgroundColor="White" Grid.Column="1" Margin="16">
-                                        <Image Source="{Binding Imagen, Converter={StaticResource ImageConverter}}" 
-                                               Aspect="AspectFill"
-                                               VerticalOptions="FillAndExpand"
-                                               HorizontalOptions="FillAndExpand"/>
-                                    </Frame>
-                                    <StackLayout BackgroundColor="Transparent" Grid.Column="0" Padding="16" Orientation="Vertical">
-                                        <Label Text="{Binding Categoria}" TextTransform="Uppercase" FontSize="Small" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Nombre, Converter={StaticResource TextConverter}}" TextTransform="Default" FontSize="Large" TextColor="Black"/>
-                                        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                                            <Frame BackgroundColor="DodgerBlue" Padding="4" Margin="0" HorizontalOptions="Start">
-                                                <Label Text="{Binding Stock, StringFormat='{0}€'}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </Frame>
-                                            <Frame BackgroundColor="Silver" Padding="4" Margin="0" HorizontalOptions="Start">
-                                                <Label Text="{Binding Precio, StringFormat='{0} uds.'} " HorizontalOptions="Center" VerticalOptions="Center"/>
-                                            </Frame>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0"
+                                                 Padding="16">
+                                        <Label Text="{Binding Nombre, Converter={StaticResource TextConverter}}" FontSize="24" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion, Converter={StaticResource DescConverter}}" FontSize="16" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding Categoria}" TextTransform="Uppercase" FontSize="12" FontAttributes="Bold" VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1"
+                                                 Padding="16">
+                                        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100" Source="{Binding Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill"/>
                                         </StackLayout>
                                     </StackLayout>
-                                    <StackLayout Padding="16" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                        <Button Text="Details" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
-                                                Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductosCategoria}}" CommandParameter="{Binding IdProducto}"/>
-                                        <Button BackgroundColor="Silver" VerticalOptions="CenterAndExpand" HorizontalOptions="End" ImageSource="shopcar.png"
-                                                Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductosCategoria}}"
-                                                CommandParameter="{Binding IdProducto}"/>
+                                    <Grid BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="10"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1"
+                                                     Orientation="Horizontal">
+                                            <Button Command="{Binding BindingContext.ShowProducto, Source={x:Reference stackProductosCategoria}}" CommandParameter="{Binding IdProducto}"
+                                                Text="Details" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
+                                            <Button 
+                                                Text="Buy" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
+                                            <Button Command="{Binding BindingContext.AddCarrito, Source={x:Reference stackProductosCategoria}}" CommandParameter="{Binding IdProducto}"
+                                                Text="Add" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="64" FontAttributes="None"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" Padding="6">
+                                        <Label Text="{Binding Precio, StringFormat='{0}€'}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"
+                                               FontSize="24" TextColor="Black"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>

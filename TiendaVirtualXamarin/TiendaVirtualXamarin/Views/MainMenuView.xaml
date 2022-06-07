@@ -2,24 +2,20 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.MainMenuView"
-                  Visual="Material"
+                  Visual="Default"
                   xmlns:local="clr-namespace:TiendaVirtualXamarin"
                   xmlns:behaviorspack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack">
     <MasterDetailPage.Master>
         <ContentPage Title="MainPage"
-                     BackgroundColor="white"
+                     BackgroundColor="#041220"
                      x:Name="contentMenu"
                      BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=MainMenuViewModel}">
             <StackLayout Orientation="Vertical">
-                <StackLayout BackgroundColor="DodgerBlue"
-                             HeightRequest="56"
+                <StackLayout BackgroundColor="#041220"
                              Padding="16">
                     <Label Text="RanShop"
                            FontSize="Large"
-                           TextColor="White"
-                           VerticalOptions="CenterAndExpand"
-                           FontAttributes="Bold"
-                           HorizontalOptions="Start"/>
+                           TextColor="White"/>
                 </StackLayout>
                 <ListView x:Name="lsvMenu"
                           RowHeight="56"
@@ -33,20 +29,13 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal"
-                                             HeightRequest="56">
-                                    <Image Source="{Binding Icono}" 
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           VerticalOptions="CenterAndExpand"
-                                           HorizontalOptions="Center"
-                                           Margin="16"/>
+                                <StackLayout Orientation="Horizontal" Padding="16">
                                     <StackLayout Orientation="Vertical"
                                                  VerticalOptions="CenterAndExpand"
                                                  HorizontalOptions="Start">
                                         <Label Text="{Binding Titulo}"
                                                FontSize="Medium"
-                                               TextColor="Black"/>
+                                               TextColor="White"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
