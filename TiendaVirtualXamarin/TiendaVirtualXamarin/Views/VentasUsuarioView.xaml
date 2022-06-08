@@ -8,8 +8,8 @@
              x:Name="stackVentas">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Ventas"
-                VerticalOptions="CenterAndExpand" 
+            <Button Text="Ventas"
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
             <ListView ItemsSource="{Binding Ventas}" RowHeight="50">
                 <ListView.ItemTemplate>

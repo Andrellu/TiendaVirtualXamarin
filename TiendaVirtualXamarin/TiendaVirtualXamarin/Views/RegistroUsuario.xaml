@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.RegistroUsuario"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
-             Visual="Default">
+             Visual="Default"
+             BackgroundImageSource="wp.png">
     <ContentPage.Content>
         <StackLayout>
             <Label Text=""/>
             <ScrollView Orientation="Vertical">
-                <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
+                <StackLayout BackgroundColor="#8fc8ffff" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
                     <Label Text="Nombre Usuario:"
                    FontSize="19"
                    HorizontalOptions="CenterAndExpand" />
@@ -33,7 +34,8 @@
                    FontSize="19"
                    HorizontalOptions="CenterAndExpand" />
                     <Entry Text="{Binding Password}" IsPassword="True" FontSize="15"/>
-                    <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" />
+                    <Button Command="{Binding RegistrarUsuario}" Text="Registrarse"
+                            BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

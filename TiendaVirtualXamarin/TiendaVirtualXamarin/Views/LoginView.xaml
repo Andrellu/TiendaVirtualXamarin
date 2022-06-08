@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.LoginView"
              Visual="Default"
-             xmlns:local="clr-namespace:TiendaVirtualXamarin">
+             xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BackgroundImageSource="wp.png">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout x:Name="Inicio" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=LoginViewModel}">
-                <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" />
 
                 <BoxView />
 
@@ -17,8 +17,9 @@
                 </Frame>
                 -->
 
-                <Frame >
+                <Frame BackgroundColor="#8fc8ffff">
                     <StackLayout>
+                        <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" />
                         <StackLayout>
                             <Label Text="Nombre Usuario:" FontSize="20" x:Name="dni"/>
                             <Entry WidthRequest="500"  Text="{Binding UserName}"/>
@@ -27,8 +28,10 @@
                             <Label Text="Contraseña:" FontSize="20" />
                             <Entry Text="{Binding Password}" IsPassword="True" WidthRequest="500" />
                         </StackLayout>
-                        <Button Command="{Binding AccionIniciarSesion}" Text="Iniciar sesión" FontSize="15" />
-                        <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" FontSize="15" />
+                        <Button Command="{Binding AccionIniciarSesion}" Text="Iniciar sesión"
+                                BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
+                        <Button Command="{Binding RegistrarUsuario}" Text="Registrarse"
+                                BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
