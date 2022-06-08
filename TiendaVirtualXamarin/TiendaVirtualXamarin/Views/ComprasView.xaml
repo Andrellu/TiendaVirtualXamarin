@@ -3,12 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.ComprasView"
              xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
-             Visual="Default">
+             Visual="Default"
+             BackgroundImageSource="wp.png">
     <ContentPage.Resources>
         <converters:ImageProductosConverts x:Key="ImageConverter"/>
+        <converters:ProductosDetailsConverts x:Key="PDConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
+        <StackLayout Padding="16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#8fc8ffff">
+            <Frame Padding="16" CornerRadius="0" BackgroundColor="#041220" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
+                <ScrollView Orientation="Vertical">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                        <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Nombre, Converter={StaticResource PDConverter}}" FontSize="28" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Descripcion, Converter={StaticResource PDConverter}}" FontSize="18" HorizontalOptions="Start" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Categoria}" TextTransform="Uppercase" FontSize="16" TextColor="White" FontAttributes="Bold"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Stock, StringFormat='Stock: {0}'}"
+                                               FontSize="24" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0}€'}"
+                                               FontSize="24" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Button Command="{Binding RealizarCompra}"
+                        CommandParameter="{Binding Producto.IdProducto}"
+                                                Text="Buy" CornerRadius="0" BackgroundColor="#8fc8ffff" TextColor="Black" FontAttributes="None" VerticalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+        
+        <!--<ScrollView Orientation="Vertical">
             <StackLayout >
                 <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" WidthRequest="180"/>
                 <Label Text="{Binding Producto.Nombre}" FontSize="25"/>
@@ -18,6 +46,6 @@
                 <Button Text="Comprar" Command="{Binding RealizarCompra}"
                         CommandParameter="{Binding Producto.IdProducto}"/>
             </StackLayout>
-        </ScrollView>
+        </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
