@@ -65,7 +65,14 @@ namespace TiendaVirtualXamarin.ViewModels
                     */
                     await this.SaveProductosCategoriaSession((string)categoria);
                     MainMenuView view = App.ServiceLocator.MainMenuView;
-                    view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosCategoriaView)));
+                    if (App.ServiceLocator.SessionService.User != null)
+                    {
+                        view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosCategoriaLoginView)));
+                    }
+                    else
+                    {
+                        view.Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductosCategoriaView)));
+                    }
                     view.IsPresented = false;
                 });
             }
