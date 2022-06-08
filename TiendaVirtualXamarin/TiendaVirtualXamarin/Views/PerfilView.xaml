@@ -4,13 +4,55 @@
              x:Class="TiendaVirtualXamarin.Views.PerfilView"
              Visual="Material"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
-             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters">
+             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
+             BackgroundImageSource="wp.png">
     <ContentPage.Resources>
         <converters:ImageUsuariosConverts x:Key="ImageConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout x:Name="stackUsuario" BindingContext="{Binding Source={x:Static local:App.ServiceLocator},Path=PerfilViewModel}">
-            <Frame Margin="10" Padding="2" HeightRequest="6000">
+        <ScrollView Orientation="Vertical">
+            <StackLayout x:Name="stackUsuario"
+                     Padding="16"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator},Path=PerfilViewModel}">
+
+                <Frame BackgroundColor="#8fc8ffff" VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="125"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Padding="8">
+                            <Image Source="{Binding Usuario.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                            <StackLayout HeightRequest="8" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                            <Label Text="Nombre:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="{Binding Usuario.Nombre}" FontSize="16" TextColor="Black"/>
+                            <Label Text="Nombre de usuario:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="{Binding Usuario.NombreUsuario}" FontSize="16" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Padding="8">
+                            <Label Text="Apellidos:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="{Binding Usuario.Apellidos}" FontSize="16" TextColor="Black"/>
+                            <Label Text="Direccion:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="{Binding Usuario.Direccion}" FontSize="16" TextColor="Black"/>
+                            <StackLayout HeightRequest="8" HorizontalOptions="FillAndExpand"/>
+                            <Button Command="{Binding MostarCarrito}" Text="Carrito" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
+
+                            <Button Command="{Binding LogOut}" Text="LogOut" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
+
+                            <Button Command="{Binding MostrarVentas}" Text="Ventas" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+            
+            <!--<Frame Margin="10" Padding="2" HeightRequest="6000">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="250"/>
@@ -25,7 +67,7 @@
 
                     <StackLayout Grid.Column="0" Grid.Row="0" HeightRequest="250" WidthRequest="199">
                        
-                    <!--<Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" Aspect="AspectFit"/>-->
+                    --><!--<Image Source="https://storagetajamarjalt.blob.core.windows.net/torneos/admin-removebg-preview.png" Aspect="AspectFit"/>--><!--
                     <Image Source="{Binding Usuario.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFit" HeightRequest="300"/>
                         
                     </StackLayout>
@@ -41,17 +83,17 @@
 
                     </StackLayout>
                     <StackLayout Grid.Row="2">
-                        <Button Text="Carrito" Command="{Binding MostarCarrito}" />
+                        <Button Text="Carrito" Command="{Binding MostarCarrito}" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
                     </StackLayout>
-                   
                     <StackLayout Grid.Row="2" Grid.Column="1" >
-                        <Button  Text="LogOut" Command="{Binding LogOut}"/>
+                        <Button  Text="LogOut" Command="{Binding LogOut}" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
                     </StackLayout>
                     <StackLayout Grid.Row="3">
-                        <Button Text="Ventas" Command="{Binding MostrarVentas}" />
+                        <Button Text="Ventas" Command="{Binding MostrarVentas}" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
                     </StackLayout>
                 </Grid>
-            </Frame>
+            </Frame>-->
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

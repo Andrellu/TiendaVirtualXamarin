@@ -3,9 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.RegistroUsuario"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
-             Visual="Default">
+             Visual="Default"
+             BackgroundImageSource="wp.png">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView Padding="16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
+                <Label Text="Registrarse" FontSize="50" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                <Frame Padding="16" CornerRadius="0" BackgroundColor="#8fc8ffff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
+                    <StackLayout>
+                        <StackLayout>
+                            <Label Text="Nombre Usuario:" FontSize="20"/>
+                            <Entry WidthRequest="500"  Text="{Binding UserName}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Contraseña:" FontSize="20" />
+                            <Entry Text="{Binding Password}" IsPassword="True" WidthRequest="500" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Nombre:" FontSize="20"/>
+                            <Entry WidthRequest="500"  Text="{Binding Nombre}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Primer Apellido:" FontSize="20"/>
+                            <Entry WidthRequest="500"  Text="{Binding ApellidoUno}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Segundo Apellido:" FontSize="20"/>
+                            <Entry WidthRequest="500"  Text="{Binding ApellidoDos}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Dirección:" FontSize="20"/>
+                            <Entry WidthRequest="500"  Text="{Binding Direccion}"/>
+                        </StackLayout>
+                        <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        
+        <!--<StackLayout>
             <Label Text=""/>
             <ScrollView Orientation="Vertical">
                 <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=RegistroUsuarioViewModel}">
@@ -36,6 +73,6 @@
                     <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" />
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

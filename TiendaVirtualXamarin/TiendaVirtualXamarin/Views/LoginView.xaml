@@ -3,21 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.LoginView"
              Visual="Default"
-             xmlns:local="clr-namespace:TiendaVirtualXamarin">
+             xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BackgroundImageSource="wp.png">
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
+        <ScrollView Padding="16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout x:Name="Inicio" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=LoginViewModel}">
-                <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" />
-
-                <BoxView />
-
-                <!--
-                <Frame Margin="0" TranslationX="15" TranslationY="355">
-                    <BoxView HeightRequest="325" CornerRadius="20" WidthRequest="200" Color="Orange" />
-                </Frame>
-                -->
-
-                <Frame >
+                <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                <Frame Padding="16" CornerRadius="0" BackgroundColor="#8fc8ffff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
                     <StackLayout>
                         <StackLayout>
                             <Label Text="Nombre Usuario:" FontSize="20" x:Name="dni"/>
@@ -27,8 +20,8 @@
                             <Label Text="Contraseña:" FontSize="20" />
                             <Entry Text="{Binding Password}" IsPassword="True" WidthRequest="500" />
                         </StackLayout>
-                        <Button Command="{Binding AccionIniciarSesion}" Text="Iniciar sesión" FontSize="15" />
-                        <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" FontSize="15" />
+                        <Button Command="{Binding AccionIniciarSesion}" Text="Iniciar sesión" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
+                        <Button Command="{Binding RegistrarUsuario}" Text="Registrarse" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None" />
                     </StackLayout>
                 </Frame>
             </StackLayout>
