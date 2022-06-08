@@ -16957,6 +16957,15 @@ namespace TiendaVirtualXamarin.Droid
 			// aapt resource value: 0x7F0C0005
 			public const int launcher_foreground = 2131492869;
 			
+			// aapt resource value: 0x7F0C0006
+			public const int RanShop = 2131492870;
+			
+			// aapt resource value: 0x7F0C0007
+			public const int RanShop_adaptive_back = 2131492871;
+			
+			// aapt resource value: 0x7F0C0008
+			public const int RanShop_adaptive_fore = 2131492872;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
