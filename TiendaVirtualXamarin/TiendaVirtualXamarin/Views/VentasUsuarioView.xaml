@@ -5,25 +5,33 @@
              xmlns:viewmodels="clr-namespace:TiendaVirtualXamarin.ViewModels"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=VentasUsuarioViewModel}"
-             x:Name="stackVentas">
+             x:Name="stackVentas"
+             BackgroundImageSource="wp.png">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Ventas"
-                VerticalOptions="Start" 
-                HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding Ventas}" RowHeight="50">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding IdVenta}"/>
-                                <Label Text="{Binding NombreProducto}"/>
-                                <Label Text="{Binding NombreUsuario}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView Padding="16" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <StackLayout>
+                <Label Text="Mis ventas" FontSize="50" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                <Frame Padding="16" CornerRadius="0" BackgroundColor="#8fc8ffff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
+                    <ListView ItemsSource="{Binding Ventas}" RowHeight="200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding IdVenta, StringFormat='Identificador de venta: {0}'}" FontSize="14" FontAttributes="Bold"/>
+                                        <Label Text="Nombre de producto:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="{Binding NombreProducto}" FontSize="16" TextColor="Black"/>
+                                        <Label Text="Cantidad de producto:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Cantidad}" FontSize="16" TextColor="Black"/>
+                                        <Label Text="Fecha de venta:" FontSize="14" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="{Binding FechaVenta}" FontSize="16" TextColor="Black"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

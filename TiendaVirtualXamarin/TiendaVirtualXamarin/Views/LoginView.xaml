@@ -12,7 +12,6 @@
                 <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
                 <Frame Padding="16" CornerRadius="0" BackgroundColor="#8fc8ffff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
                     <StackLayout>
-                        <Label Text="Iniciar sesión" FontSize="50" HorizontalOptions="CenterAndExpand" />
                         <StackLayout>
                             <Label Text="Nombre Usuario:" FontSize="20" x:Name="dni"/>
                             <Entry WidthRequest="500"  Text="{Binding UserName}"/>
