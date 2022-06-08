@@ -3,51 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.ProductosDetailsView"
              Visual="Default"
-             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters">
+             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
+             BackgroundImageSource="wp.png">
     <ContentPage.Resources>
         <converters:ImageProductosConverts x:Key="ImageConverter"/>
+        <converters:ProductosDetailsConverts x:Key="PDConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#8fc8ffff">
+            <Frame Padding="16" CornerRadius="0" BackgroundColor="#041220" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0">
+                <ScrollView Orientation="Vertical">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                        <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Nombre, Converter={StaticResource PDConverter}}" FontSize="28" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Descripcion, Converter={StaticResource PDConverter}}" FontSize="18" HorizontalOptions="Start" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Categoria}" TextTransform="Uppercase" FontSize="16" TextColor="White" FontAttributes="Bold"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Stock, StringFormat='Stock: {0}'}"
+                                               FontSize="24" TextColor="White"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                        <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0}€'}"
+                                               FontSize="24" TextColor="White"/>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+        <!--<StackLayout BackgroundColor="Transparent">
             <Frame Margin="20" Padding="2">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="250"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
 
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="10"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="1" Grid.Row="0">
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="1" Grid.Row="0">
                         <Image Source="{Binding Producto.Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill" HeightRequest="250" WidthRequest="180"/>
 
                     </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="1">
+                    <StackLayout Grid.Column="1" Grid.Row="1">
                         <Label Text="{Binding Producto.Nombre}" FontSize="40" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" TextColor="Black" HorizontalOptions="Start"/>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="2">
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="2">
                         <Label  Text="{Binding Producto.Descripcion}" FontSize="20" MaxLines="4" LineBreakMode="TailTruncation"  WidthRequest="300"/>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="3">
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="3">
                         <Label Text="{Binding Producto.Stock, StringFormat='Stock: {0}.'}" FontAttributes="Italic" FontSize="25" HorizontalOptions="Start"/>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="4">
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="4">
                         <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0}€'}" FontSize="25" FontAttributes="Italic" HorizontalOptions="Start"/>
-                </StackLayout>
-            </Grid>
+                    </StackLayout>
+                </Grid>
             </Frame>
-
-
-
-
-        </StackLayout>
-     
-               
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
