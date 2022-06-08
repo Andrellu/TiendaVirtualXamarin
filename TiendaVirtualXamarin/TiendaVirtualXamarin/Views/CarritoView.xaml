@@ -2,9 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TiendaVirtualXamarin.Views.CarritoView"
+             xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
              Visual="Default"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=CarritoViewModel}" x:Name="PageCarritoView">
+    <ContentPage.Resources>
+        <converters:ImageProductosConverts x:Key="ImageConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Carrito"
@@ -14,8 +18,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Image Source="{Binding Imagen}"/>
+                            <StackLayout Margin="10" BackgroundColor="LightBlue">
+                                <Image Source="{Binding Imagen, Converter={StaticResource ImageConverter}}" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="100" WidthRequest="100"/>
                                 <Label Text="{Binding Nombre}" FontSize="20"/>
                                 <Button Text="Eliminar" Command="{Binding BindingContext.DeleteProductoCarrito, Source={x:Reference PageCarritoView}}" CommandParameter="{Binding IdProducto}"/>
                             </StackLayout>
@@ -24,6 +28,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="Realizar Compra" Command="{Binding RealizarCompra}" />
+            <Button Text="Vaciar Carrito" Command="{Binding VaciarCarrito}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

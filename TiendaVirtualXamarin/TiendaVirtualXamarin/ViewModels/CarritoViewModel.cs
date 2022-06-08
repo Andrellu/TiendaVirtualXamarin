@@ -15,13 +15,19 @@ namespace TiendaVirtualXamarin.ViewModels
 
         public CarritoViewModel(ServiceVentas serviceVentas, ServiceProductos serviceProductos)
         {
-            this.Carrito = App.ServiceLocator.SessionService.ProductosCarrito;
             this.serviceVentas = serviceVentas;
             this.serviceProductos = serviceProductos;
-            //MessagingCenter.Subscribe<CarritoViewModel>(this, "RELOAD", async (sender) =>
-            //{
-            //    await App.ServiceLocator.SessionService.ProductosCarrito;
-            //});
+            this.LoadCarrito();
+            MessagingCenter.Subscribe<CarritoViewModel>(this, "RELOAD", (sender) =>
+            {
+                this.LoadCarrito();            
+            });
+                        
+        }
+
+        private void LoadCarrito()
+        {            
+            this.Carrito = App.ServiceLocator.SessionService.ProductosCarrito;            
         }
 
         private List<Producto> _Carrito;
@@ -59,7 +65,8 @@ namespace TiendaVirtualXamarin.ViewModels
                         };
                         await this.serviceVentas.InsertVentaAsync(venta, App.ServiceLocator.SessionService.Token);                        
                     }
-                    App.ServiceLocator.SessionService.ProductosCarrito.Clear();
+                    Carrito.Clear();
+                    MessagingCenter.Send<CarritoViewModel>(App.ServiceLocator.CarritoViewModel, "RELOAD");
                     await App.Current.MainPage.DisplayAlert("¡ADVERTENCIA!", "Compra realizada con éxito.", "Ok");
                 });
             }
@@ -71,9 +78,23 @@ namespace TiendaVirtualXamarin.ViewModels
             {
                 return new Command(async (idproducto) =>
                 {
-                    Producto p = await this.serviceProductos.FindProducto((int)idproducto);
-                    App.ServiceLocator.SessionService.ProductosCarrito.Remove(p);                    
+                    int idprod = (int)idproducto;
+                    this.Carrito.RemoveAll(x => x.IdProducto == idprod);                   
+                    MessagingCenter.Send<CarritoViewModel>(App.ServiceLocator.CarritoViewModel, "RELOAD");
                     await Application.Current.MainPage.DisplayAlert("Eliminado", "Se ha eliminado el producto del carrito", "Ok");
+                });
+            }
+        }
+
+        public Command VaciarCarrito
+        {
+            get
+            {
+                return new Command(async () =>
+                {                    
+                    this.Carrito.Clear();                    
+                    await Application.Current.MainPage.DisplayAlert("", "Se ha vaciado el carrito", "Ok");
+                    MessagingCenter.Send<CarritoViewModel>(App.ServiceLocator.CarritoViewModel, "RELOAD");
                 });
             }
         }
