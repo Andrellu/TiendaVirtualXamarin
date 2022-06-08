@@ -5,11 +5,73 @@
              xmlns:converters="clr-namespace:TiendaVirtualXamarin.Converters"
              Visual="Default"
              xmlns:local="clr-namespace:TiendaVirtualXamarin"
+             BackgroundImageSource="wp.png"
              BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=CarritoViewModel}" x:Name="PageCarritoView">
     <ContentPage.Resources>
         <converters:ImageProductosConverts x:Key="ImageConverter"/>
+        <converters:SubStringTextConverts x:Key="TextConverter"/>
+        <converters:DescripcionConverts x:Key="DescConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <StackLayout BackgroundColor="Transparent" x:Name="stackProductos" BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=CarritoViewModel}">
+            <ListView ItemsSource="{Binding Carrito}" RowHeight="228" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" CornerRadius="0" BackgroundColor="#8fc8ffff" VerticalOptions="CenterAndExpand" Margin="16">
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="132"/>
+                                        <RowDefinition Height="64"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="132"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0"
+                                                 Padding="16">
+                                        <Label Text="{Binding Nombre, Converter={StaticResource TextConverter}}" FontSize="24" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion, Converter={StaticResource DescConverter}}" FontSize="16" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding Categoria}" TextTransform="Uppercase" FontSize="12" FontAttributes="Bold" VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1"
+                                                 Padding="16">
+                                        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100" Source="{Binding Imagen, Converter={StaticResource ImageConverter}}" Aspect="AspectFill"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Grid BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="10"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1"
+                                                     Orientation="Horizontal">
+                                            <Button Command="{Binding BindingContext.DeleteProductoCarrito, Source={x:Reference stackProductos}}" CommandParameter="{Binding IdProducto}"
+                                                Text="Delete" CornerRadius="0" BackgroundColor="#041220" TextColor="White" FontAttributes="None"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <StackLayout BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" Padding="6">
+                                        <Label Text="{Binding Precio, StringFormat='{0}€'}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"
+                                               FontSize="24" TextColor="Black"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout BackgroundColor="Transparent">
+                <Button Command="{Binding RealizarCompra}" Text="{Binding TotalAComprar}" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="90" FontAttributes="None" HeightRequest="40" Margin="1"/>
+                <Button Command="{Binding VaciarCarrito}" Text="Vaciar Carrito" CornerRadius="0" BackgroundColor="#041220" TextColor="White"  WidthRequest="90" FontAttributes="None" HeightRequest="40" Margin="1"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <!--<ContentPage.Content>
         <StackLayout>
             <Label Text="Carrito"
                 VerticalOptions="Start" 
@@ -30,5 +92,5 @@
             <Button Text="Realizar Compra" Command="{Binding RealizarCompra}" />
             <Button Text="Vaciar Carrito" Command="{Binding VaciarCarrito}" />
         </StackLayout>
-    </ContentPage.Content>
+    </ContentPage.Content>-->
 </ContentPage>
